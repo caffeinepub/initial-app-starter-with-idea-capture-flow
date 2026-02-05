@@ -1,0 +1,96 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Initial app starter with idea-capture flow (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement a default-route landing page with a guided app-idea form and an on-page confirmation summary.",
+      "acceptanceCriteria": [
+        "Landing page renders without errors and is the default route",
+        "Form includes at least: App name, Description, Target users, Must-have features, Nice-to-have features",
+        "Submitting the form displays a readable summary of the entered information on the page",
+        "All user-facing text is in English"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app shell that renders the landing experience as the default view (no additional routes required). This wires the landing page into the app so it is shown on first load."
+        },
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "create",
+          "description": "Create the landing page UI for the idea-capture flow (title/intro copy in English, guided form section, and an on-page confirmation/summary section after submit). Use shadcn-ui composed components (e.g., Card, Button, Input, Textarea, Label) to provide consistent structure and form styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/IdeaCaptureForm.tsx",
+          "operation": "create",
+          "description": "Create a reusable guided form component that captures: App name, Description, Target users, Must-have features, Nice-to-have features, and triggers an onSubmit callback with the collected values. Use shadcn-ui form primitives (Input/Textarea/Label/Button) for accessible controls. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/IdeaSummary.tsx",
+          "operation": "create",
+          "description": "Create a summary component that renders a readable confirmation of the user-entered fields after submit (English labels, clear sectioning). Use shadcn-ui Card/typography patterns for a cohesive summary layout. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "On submit, save the latest app idea via the backend actor and load/display the latest saved idea on refresh with an English empty state when none exists.",
+      "acceptanceCriteria": [
+        "Backend exposes methods to save an app idea and to fetch the latest saved app idea",
+        "Frontend calls the backend to save the idea on submit and can load/display the latest saved idea after a refresh",
+        "If no idea has been saved yet, the UI shows an empty state message in English"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/lib/appIdeaEncoding.ts",
+          "operation": "create",
+          "description": "Add helper functions to map the full guided form data into the backend’s available shape (title + description string) and to decode it back for display. Keep the encoding resilient so the UI can still render if decoding fails (fall back to showing the raw description)."
+        },
+        {
+          "path": "frontend/src/hooks/useLatestAppIdea.ts",
+          "operation": "create",
+          "description": "Create a React Query hook that uses the immutable useActor hook to fetch the latest saved app idea from the backend interface and returns loading/error/empty-state friendly values (treat missing/failed fetch as empty state for UX)."
+        },
+        {
+          "path": "frontend/src/hooks/useSubmitAppIdea.ts",
+          "operation": "create",
+          "description": "Create a React Query mutation hook that uses the immutable useActor hook to submit an app idea to the backend interface and, on success, refreshes the cached latest-idea query so the UI updates predictably."
+        },
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Wire the form submit action to call the submit hook (saving the idea) and render the latest-saved idea by calling the latest-idea hook on load. Ensure after refresh the page can load and display the latest saved idea, and show an English empty state message when no idea is available."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Apply a cohesive onboarding theme (non-blue/purple primary palette) with consistent typography and spacing without editing immutable UI component source paths.",
+      "acceptanceCriteria": [
+        "UI uses a consistent palette, typography scale, and spacing rhythm across the landing page, form, and summary view",
+        "Primary palette is not blue/purple",
+        "No custom edits are made to immutable UI component source paths; compose components instead"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create the CSS entry imported by frontend/src/main.tsx, including Tailwind directives and a coherent set of CSS variables for the theme. Set primary/accent to a non-blue/purple palette (e.g., warm neutral + amber/green accents) and define consistent base typography defaults."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions as needed for the onboarding look (e.g., fontFamily, container/spacing defaults) while keeping the primary palette non-blue/purple and relying on CSS variables for shadcn-ui theming."
+        },
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Align layout and spacing rhythm (section padding, consistent gaps, max-width container) and ensure the page uses composed shadcn-ui components for consistent styling rather than modifying immutable component source paths. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "kind": "build_request",
+  "title": "Initial app starter with idea-capture flow",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a simple landing page that helps the user describe what app they want to build, including a short guided form (e.g., app name, what it should do, target users, must-have features, nice-to-have features) and a submit action that shows a confirmation summary on screen.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Hello can you help me make a app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Landing page renders without errors and is the default route",
+        "Form includes at least: App name, Description, Target users, Must-have features, Nice-to-have features",
+        "Submitting the form displays a readable summary of the entered information on the page",
+        "All user-facing text is in English"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Persist the submitted app idea in the backend canister and allow fetching the latest submitted idea from the frontend (single latest record is sufficient).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Hello can you help me make a app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes methods to save an app idea and to fetch the latest saved app idea",
+        "Frontend calls the backend to save the idea on submit and can load/display the latest saved idea after a refresh",
+        "If no idea has been saved yet, the UI shows an empty state message in English"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Apply a coherent visual theme across the UI (colors, typography, spacing, and component styling) suitable for an app-builder onboarding experience; avoid blue/purple as the primary palette.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "UI uses a consistent palette, typography scale, and spacing rhythm across the landing page, form, and summary view",
+        "Primary palette is not blue/purple",
+        "No custom edits are made to immutable UI component source paths; compose components instead"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text.",
+    "Backend must remain a single Motoko actor (all logic in backend/main.mo).",
+    "Do not edit any frontend immutable paths (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui)."
+  ],
+  "nonGoals": [
+    "Implementing a specific app domain (e.g., ecommerce, social network, game) beyond capturing and persisting the user’s idea.",
+    "Adding third-party authentication providers (only Internet Identity is supported).",
+    "Real-time features (websockets/chat/push notifications)."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

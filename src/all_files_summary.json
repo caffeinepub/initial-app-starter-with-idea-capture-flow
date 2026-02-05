@@ -1,0 +1,20 @@
+{
+  "backend/main.mo": "Motoko canister storing the latest app idea and exposing submit and query methods with simple validation.",
+  "feature_evidence.json": "Feature evidence report mapping product requirements to involved files, components, and confidence levels.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing the purpose of each frontend file in the project.",
+  "frontend/index.css": "Global Tailwind-based theme definitions using warm OKLCH colors for light and dark modes.",
+  "frontend/index.html": "Base HTML file loading the React entrypoint and root container.",
+  "frontend/src/App.tsx": "Root React component that renders the LandingPage.",
+  "frontend/src/components/IdeaCaptureForm.tsx": "Guided form component collecting app idea details with validation and UI controls.",
+  "frontend/src/components/IdeaSummary.tsx": "Displays a styled summary of a saved app idea with optional editing action.",
+  "frontend/src/hooks/useActor.ts": "React hook creating and refreshing the backend canister actor based on user identity.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Authentication context and hooks for managing Internet Identity login, logout, and identity state.",
+  "frontend/src/hooks/useLatestAppIdea.ts": "React Query hook fetching and decoding the latest stored app idea, handling empty state.",
+  "frontend/src/hooks/useSubmitAppIdea.ts": "React Query mutation hook encoding and submitting app ideas, then refreshing the latest idea cache.",
+  "frontend/src/index.css": "Defines Tailwind base layers and OKLCH CSS variables for light/dark themes and applies global styles.",
+  "frontend/src/lib/appIdeaEncoding.ts": "Provides helpers to encode form data into a backend AppIdea object and decode it back safely.",
+  "frontend/src/main.tsx": "Bootstraps the React app, setting up React Query and Internet Identity providers.",
+  "frontend/src/pages/LandingPage.tsx": "Implements the landing page with idea form submission, loading previous ideas, and showing a summary.",
+  "frontend/tailwind.config.js": "Configures Tailwind with custom colors, radius, typography, plugins, and OKLCH-based theme extensions.",
+  "project_state.json": "Tracks project metadata, implemented features, and project state configuration."
+}

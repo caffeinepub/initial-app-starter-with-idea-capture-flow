@@ -1,0 +1,11 @@
+{
+  "frontend/src/App.tsx": "Main app component that renders the LandingPage as the default view with no routing required.",
+  "frontend/src/pages/LandingPage.tsx": "Landing page component that orchestrates the idea capture flow, displaying either the form or summary view based on submission state, with loading and error handling for persisted ideas.",
+  "frontend/src/components/IdeaCaptureForm.tsx": "Reusable guided form component that captures app name, description, target users, must-have features, and nice-to-have features with validation and accessible controls.",
+  "frontend/src/components/IdeaSummary.tsx": "Summary component that displays a formatted confirmation of the submitted app idea with all captured fields organized in a card layout.",
+  "frontend/src/hooks/useLatestAppIdea.ts": "React Query hook that fetches the latest saved app idea from the backend, handling the empty state gracefully when no idea exists yet.",
+  "frontend/src/hooks/useSubmitAppIdea.ts": "React Query mutation hook that submits app ideas to the backend and invalidates the cached latest-idea query on success.",
+  "frontend/src/lib/appIdeaEncoding.ts": "Helper functions to encode the full form data into the backend's title+description format using JSON serialization, and decode it back with fallback handling.",
+  "frontend/src/index.css": "Global styles with OKLCH color system using a warm neutral palette with amber/orange accents for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with Inter font family and custom design tokens matching the warm amber/orange theme."
+}

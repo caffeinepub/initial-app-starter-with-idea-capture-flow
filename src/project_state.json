@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-simple-landing-page-that-helps-the-user-describe-what-app-they-want-to-build-including-a-short-guided-form-e-g-app-name-what-it-should-do-target-users-must-have-features-nice-to-have-features-and-a-submit-action-that-shows-a-confirmation-summary-on-screen",
+      "title": "Create a simple landing page that helps the user describe what app they want to build, including a short guided form (e.g., app name, what it should do, target users, must-have features, nice-to-have features) and a submit action that shows a confirmation summary on screen.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-persist-the-submitted-app-idea-in-the-backend-canister-and-allow-fetching-the-latest-submitted-idea-from-the-frontend-single-latest-record-is-sufficient",
+      "title": "Persist the submitted app idea in the backend canister and allow fetching the latest submitted idea from the frontend (single latest record is sufficient).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-visual-theme-across-the-ui-colors-typography-spacing-and-component-styling-suitable-for-an-app-builder-onboarding-experience-avoid-blue-purple-as-the-primary-palette",
+      "title": "Apply a coherent visual theme across the UI (colors, typography, spacing, and component styling) suitable for an app-builder onboarding experience; avoid blue/purple as the primary palette.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [],
+  "projectName": "Initial app starter with idea-capture flow",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

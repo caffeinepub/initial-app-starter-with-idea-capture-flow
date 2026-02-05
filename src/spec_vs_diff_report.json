@@ -1,0 +1,59 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-05T17:51:40.395Z",
+  "summary": "Core landing-page + guided form + summary view are implemented, along with backend persistence for a single latest idea and a warm amber/orange theme. However, the frontend empty-state behavior for “no idea saved yet” is likely not implemented as specified because the fetch hook converts the backend trap into `null` without surfacing an error, while the UI’s empty-state message is only shown when `error` is present.",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "If no idea has been saved yet, the UI shows an empty state message in English.",
+      "reason": "The backend `getLatestAppIdea` traps when no idea exists, but the frontend fetch hook catches that error and returns `null`, so React Query likely will not set `error`. The landing page shows the empty-state message only when `error && !isLoading`, so the empty state may never appear.",
+      "evidence": [
+        "backend/main.mo (getLatestAppIdea traps on null)",
+        "frontend/src/hooks/useLatestAppIdea.ts (catch returns null, does not rethrow)",
+        "frontend/src/pages/LandingPage.tsx (empty-state message gated by `error`)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity + authenticated/anonymous actor plumbing via `useInternetIdentity` and `useActor`.",
+      "reason": "The BuildRequest did not request adding authentication/identity-driven actor management for this idea-capture flow (only noted as a non-goal to add other providers).",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/main.tsx"
+      ]
+    },
+    {
+      "description": "Custom encoding/serialization layer to pack extra idea fields into the backend `description` JSON string.",
+      "reason": "The BuildRequest only required persisting the idea and fetching the latest; it did not require a JSON encoding scheme to fit a reduced backend type.",
+      "evidence": [
+        "frontend/src/lib/appIdeaEncoding.ts",
+        "frontend/src/hooks/useSubmitAppIdea.ts",
+        "frontend/src/hooks/useLatestAppIdea.ts"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/IdeaCaptureForm.tsx",
+    "frontend/src/components/IdeaSummary.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useLatestAppIdea.ts",
+    "frontend/src/hooks/useSubmitAppIdea.ts",
+    "frontend/src/index.css",
+    "frontend/src/lib/appIdeaEncoding.ts",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/LandingPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

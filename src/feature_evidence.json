@@ -1,0 +1,67 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-simple-landing-page-that-helps-the-user-describe-what-app-they-want-to-build-including-a-short-guided-form-e-g-app-name-what-it-should-do-target-users-must-have-features-nice-to-have-features-and-a-submit-action-that-shows-a-confirmation-summary-on-screen",
+      "featureTitle": "Create a simple landing page that helps the user describe what app they want to build, including a short guided form (e.g., app name, what it should do, target users, must-have features, nice-to-have features) and a submit action that shows a confirmation summary on screen.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/IdeaCaptureForm.tsx",
+        "frontend/src/components/IdeaSummary.tsx",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-persist-the-submitted-app-idea-in-the-backend-canister-and-allow-fetching-the-latest-submitted-idea-from-the-frontend-single-latest-record-is-sufficient",
+      "featureTitle": "Persist the submitted app idea in the backend canister and allow fetching the latest submitted idea from the frontend (single latest record is sufficient).",
+      "files": [
+        "frontend/src/hooks/useLatestAppIdea.ts",
+        "frontend/src/hooks/useSubmitAppIdea.ts",
+        "frontend/src/lib/appIdeaEncoding.ts",
+        "frontend/src/pages/LandingPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-coherent-visual-theme-across-the-ui-colors-typography-spacing-and-component-styling-suitable-for-an-app-builder-onboarding-experience-avoid-blue-purple-as-the-primary-palette",
+      "featureTitle": "Apply a coherent visual theme across the UI (colors, typography, spacing, and component styling) suitable for an app-builder onboarding experience; avoid blue/purple as the primary palette.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/pages/LandingPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
